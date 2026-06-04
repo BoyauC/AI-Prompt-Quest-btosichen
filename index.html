@@ -33,20 +33,24 @@
             color: var(--color-text);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 20px 10px;
+            padding: 0 10px; /* 移除原本的上下 padding，改由 container 的 margin 控制 */
             -webkit-user-select: none; /* 防止 iPad 上長按選取文字 */
             user-select: none;
         }
 
-        /* 主容器：限制最大寬度，置中顯示 */
+        /* 主容器：限制最大寬度，置中顯示，依要求調整為螢幕的 85% 大小 */
         .container {
-            max-width: 900px;
-            margin: 0 auto;
+            width: 85%; /* 寬度佔螢幕的 85% */
+            max-width: 1600px; /* 放寬最大寬度，讓大螢幕能大幅展開 */
+            min-height: 85vh; /* 最小高度佔螢幕的 85%，讓整體畫面更平衡 */
+            margin: 3vh auto; /* 讓容器在畫面上方留一點空間並置中 */
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
             padding-bottom: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
         /* =========================================
@@ -112,7 +116,10 @@
         /* =========================================
            5. 主要內容區塊與卡片設計
         ========================================= */
-        .content-area { padding: 25px; }
+        .content-area { 
+            padding: 40px; /* 加大內容區塊內距，適應大螢幕 */
+            flex-grow: 1; /* 自動填滿剩餘高度 */
+        }
         .section { display: none; animation: fadeIn 0.5s; }
         .section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -273,9 +280,9 @@
         .memory-game {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 15px;
             margin: 20px auto;
-            max-width: 500px;
+            max-width: 600px;
         }
         .memory-card {
             aspect-ratio: 1;
@@ -284,12 +291,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             border-radius: 12px;
             cursor: pointer;
             text-align: center;
-            padding: 5px;
+            padding: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transform-style: preserve-3d;
             transition: transform 0.3s, background-color 0.3s;
@@ -356,9 +363,11 @@
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
 
         /* 響應式微調 */
-        @media (max-width: 600px) {
-            .memory-game { grid-template-columns: repeat(2, 1fr); }
-            .memory-card { aspect-ratio: 1.5; }
+        @media (max-width: 800px) {
+            .container { width: 95%; } /* 小螢幕稍微佔滿一點 */
+            .memory-game { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+            .memory-card { aspect-ratio: 1.5; font-size: 14px; }
+            .content-area { padding: 25px; }
         }
 
     </style>
