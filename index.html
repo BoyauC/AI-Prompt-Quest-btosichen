@@ -92,6 +92,16 @@
             border-radius: 20px;
         }
 
+        .creator-info-method1 {
+            text-align: right;    /* 這是讓文字靠右對齊的關鍵 */
+    
+        /* 以下是建議搭配的樣式，你可以視需求調整 */
+            color: #ffffff;       /* 設定你剛剛想要的白色字體 */
+            font-size: 0.8em;     /* 設定稍微縮小的字體，視覺上更和諧 */
+            margin-bottom: 8px;   /* 讓文字跟下方的進度條保持一點距離 */
+            padding-right: 10px;  /* (可選) 如果文字太貼齊右邊緣，可以加一點內距 */
+        }
+
         /* =========================================
            4. 導覽列 (關卡切換)
         ========================================= */
@@ -403,12 +413,15 @@
      <header>
             <h1>🎮 Prompt Quest 🤖</h1>
             <p>用 RTBF 公式，完成你的 AI 素養闖關任務</p>
+            
+            <div class="creator-info-method1">
+                 臺北市立陽明高級中學國中部 陳政川教師 提供
+            </div>
+                       
             <div class="progress-container">
                 <div class="progress-bar"></div>
             </div>
-            <div class="creator-info-method1">
-                📧 製作者：btosichen | 設計與開發：AI Prompt Quest Team
-            </div>
+            
         </header>
 
     <!-- 關卡導覽列 -->
